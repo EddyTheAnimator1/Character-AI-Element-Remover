@@ -1,23 +1,31 @@
 function removeElement() {
-  // Using XPath to find the element
-  const xpath = "/html/body/div/div/div/main/div/div/div/main/div/div/div[1]/div[3]/p";
-  const xpathResult = document.evaluate(xpath, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null);
-  const elementByXPath = xpathResult.singleNodeValue;
-
-  // Using JS path to find the element
+  const elementByXPath = document.evaluate("/html/body/div/div/div/main/div/div/div/main/div/div/div[1]/div[3]/p", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
   const elementByJSPath = document.querySelector("#__next > div > div > main > div > div > div > main > div > div > div.flex.flex-col.w-full.items-center.flex-1.h-screen > div.flex.w-full.flex-col.max-w-2xl > p");
 
-  // Check and remove the element if found, and continue checking
   if (elementByXPath) {
     elementByXPath.remove();
     console.log("Element removed using XPath.");
-  } else if (elementByJSPath) {
+  }
+  if (elementByJSPath) {
     elementByJSPath.remove();
     console.log("Element removed using JS path.");
-  } else {
   }
-  setTimeout(removeElement, 100); // Continue checking every 0.1
 }
 
-// Start checking for the element when the content script is loaded
+// Set up a MutationObserver to monitor changes to the body of the document
+const observer = new MutationObserver((mutationsList, observer) => {
+  for (let mutation of mutationsList) {
+    if (mutation.type === 'childList') {
+      removeElement();
+    }
+  }
+});
+
+// Start observing the document body for added/removed elements
+observer.observe(document.body, {
+  childList: true,
+  subtree: true
+});
+
+// Initial check in case the element is already present
 removeElement();
