@@ -5,7 +5,7 @@ This Chrome extension removes a specific element from the Character AI chat page
 ## Installation
 
 1. Clone or download this repository.
-2. Unzip the downloaded file if necessary.
+2. Unzip the downloaded file.
 3. Open Chrome and go to `chrome://extensions/`.
 4. Enable "Developer mode" in the top right corner.
 5. Click "Load unpacked" and select the unzipped folder containing your extension files.
