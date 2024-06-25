@@ -1,6 +1,6 @@
 # Character AI Element Remover
 
-This Chrome extension removes a specific element from the Character AI chat page.
+This Chrome extension removes a specific element from the Character AI chat page. (Remember: Everything Characters say is made up!)
 
 ## Installation
 
