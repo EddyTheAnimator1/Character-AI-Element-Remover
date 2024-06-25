@@ -15,7 +15,6 @@ function removeElement() {
     elementByJSPath.remove();
     console.log("Element removed using JS path.");
   } else {
-    console.log("Element not found, checking again in 1 second...");
   }
   setTimeout(removeElement, 100); // Continue checking every 0.1
 }
