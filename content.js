@@ -1,6 +1,7 @@
 function removeElement() {
-  const elementByXPath = document.evaluate("/html/body/div/div/div/main/div/div/div/main/div/div/div[1]/div[3]/p", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-  const elementByJSPath = document.querySelector("#__next > div > div > main > div > div > div > main > div > div > div.flex.flex-col.w-full.items-center.flex-1.h-screen > div.flex.w-full.flex-col.max-w-2xl > p");
+  // Targeting the <button> and <p> element containing "This is A.I. and not a real person..."
+  const elementByXPath = document.evaluate("//button[contains(@aria-label, 'Common.expand')]", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+  const elementByJSPath = document.querySelector("button[aria-label='Common.expand']");
 
   if (elementByXPath) {
     elementByXPath.remove();
